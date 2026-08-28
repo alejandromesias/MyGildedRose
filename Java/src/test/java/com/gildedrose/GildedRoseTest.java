@@ -96,12 +96,32 @@ class GildedRoseTest {
     }
 
     @Test
+    void quality_should_increase_by_two_for_backstage_passes_sellin_from_10_only_up_to_50(){
+        Item testitem = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49);
+        Item[] items = new Item[] {testitem};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+        assertEquals(9, app.items[0].sellIn);
+    }
+
+    @Test
     void quality_should_increase_by_three_for_backstage_passes_sellin_from_5(){
         Item testitem = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10);
         Item[] items = new Item[] {testitem};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(13, app.items[0].quality);
+        assertEquals(4, app.items[0].sellIn);
+    }
+
+    @Test
+    void quality_should_increase_by_three_for_backstage_passes_sellin_from_5_only_up_to_50(){
+        Item testitem = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49);
+        Item[] items = new Item[] {testitem};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
         assertEquals(4, app.items[0].sellIn);
     }
 
