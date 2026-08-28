@@ -56,6 +56,16 @@ class GildedRoseTest {
     }
 
     @Test
+    void quality_should_have_increased_by_1_for_Brie_even_after_sell_date(){
+        Item testitem = new Item("Aged Brie", -1, 0);
+        Item[] items = new Item[] {testitem};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(1, app.items[0].quality);
+        assertEquals(-2, app.items[0].sellIn);
+    }
+
+    @Test
     void quality_should_not_have_increased_above_50_for_Brie(){
         Item testitem = new Item("Aged Brie", 2, 50);
         Item[] items = new Item[] {testitem};
@@ -63,6 +73,16 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
         assertEquals(1, app.items[0].sellIn);
+    }
+
+    @Test
+    void quality_should_not_have_increased_above_50_for_Brie_even_after_seld_ate(){
+        Item testitem = new Item("Aged Brie", -1, 50);
+        Item[] items = new Item[] {testitem};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+        assertEquals(-2, app.items[0].sellIn);
     }
 
     @Test
