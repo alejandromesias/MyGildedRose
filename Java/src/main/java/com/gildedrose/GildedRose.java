@@ -11,7 +11,7 @@ class GildedRose {
         for (Item item : items) {
             switch (item.name) {
                 case "Sulfuras, Hand of Ragnaros":
-                    return;
+                    continue;
                 case "Aged Brie":
                     item.quality++;
                     break;
