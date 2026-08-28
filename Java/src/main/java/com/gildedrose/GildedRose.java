@@ -8,27 +8,27 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            switch (items[i].name){
-                case "Sulfuras, Hand of Ragnaros" :
+        for (Item item : items) {
+            switch (item.name) {
+                case "Sulfuras, Hand of Ragnaros":
                     return;
                 case "Aged Brie":
-                    items[i].quality++;
+                    item.quality++;
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    items[i].quality++;
-                    if (items[i].sellIn <= 10) items[i].quality++;
-                    if (items[i].sellIn <= 5) items[i].quality++;
-                    if (items[i].sellIn <= 0) items[i].quality=0;
+                    item.quality++;
+                    if (item.sellIn <= 10) item.quality++;
+                    if (item.sellIn <= 5) item.quality++;
+                    if (item.sellIn <= 0) item.quality = 0;
                     break;
                 default:
-                    items[i].quality--;
-                    if (items[i].sellIn <= 0) items[i].quality-- ;
+                    item.quality--;
+                    if (item.sellIn <= 0) item.quality--;
             }
 
-            items[i].quality = Math.min(items[i].quality, 50);
-            items[i].quality = Math.max(items[i].quality, 0);
-            items[i].sellIn--;
+            item.quality = Math.min(item.quality, 50);
+            item.quality = Math.max(item.quality, 0);
+            item.sellIn--;
         }
     }
 }
